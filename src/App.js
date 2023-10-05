@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import "./App.css";
+import TooltipComponent from "./TooltipComponent";
 function App() {
+
+  const [tooltipPosition, setTooltipPosition] = useState("tooltip_text");
+
+  function handleLeftTooltip(){
+    setTooltipPosition("tooltip_text left");
+  }
+
+  function handleTopTooltip(){
+    setTooltipPosition("tooltip_text top");
+  }
+
+  function handleRightTooltip(){
+    setTooltipPosition("tooltip_text right");
+  }
+
+  function handleBottomTooltip(){
+    setTooltipPosition("tooltip_text bottom");
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div
+        className="container"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <TooltipComponent tooltipPosition={tooltipPosition}
+                          handleLeftTooltip={handleLeftTooltip}
+                          handleTopTooltip={handleTopTooltip}
+                          handleRightTooltip={handleRightTooltip}
+                          handleBottomTooltip={handleBottomTooltip} />
+      </div>
     </div>
   );
 }
